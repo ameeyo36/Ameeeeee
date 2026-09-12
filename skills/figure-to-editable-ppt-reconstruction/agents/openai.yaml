@@ -1,0 +1,4 @@
+interface:
+  display_name: "Figure 原圖還原為可編輯 PPT"
+  short_description: "辨識原圖與重疊關係，拆分文字、圖片和圖示，重建可編輯簡報並比對驗證"
+  default_prompt: "使用 $figure-to-editable-ppt-reconstruction，將我上傳的 figure 忠實拆層還原為可編輯 PPTX，保留原圖文字與布局，並提供預覽、差異圖與未能完全拆解的項目。"
