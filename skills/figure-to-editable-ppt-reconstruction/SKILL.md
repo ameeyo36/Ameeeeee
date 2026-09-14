@@ -5,6 +5,10 @@ description: 將使用者上傳的 figure、AI 生成圖、海報、資訊圖或
 
 # Figure → 可編輯 PowerPoint
 
+## 跨平台執行
+
+本技能以通用 Agent Skills 的 `SKILL.md` 為唯一必要入口，可由 Codex、Claude Code 或 Claude 的自訂技能功能載入。`agents/openai.yaml` 僅供 Codex 顯示與提示使用，執行不依賴它。依目前環境提供的檔案、圖片、簡報與渲染能力工作，不假定另一平台的工具名稱、固定路徑或套件存在。缺少必要能力時，明確說明受限步驟與已完成產物。
+
 ## 目標與輸入
 
 使用者上傳 PNG、JPEG、WEBP 等 figure 後，分析圖像與遮擋，拆出文字、影像、icon 與幾何元素，輸出可於 PowerPoint 自行編輯的 `.pptx`。以原圖為視覺依據，不改寫文字、不美化、不重排、不替換風格。回覆預設使用繁體中文。
@@ -50,7 +54,7 @@ SVG 可縮放、可選取，不保證能在所有 PowerPoint 版本直接修改�
 
 ## 4. 產生 PPTX
 
-使用可用的簡報製作技能與工具完成實際檔案；若環境提供 presentations 技能，讀取並遵循其建置與渲染流程。先檢查可用套件與渲染器，不預設安裝有 Microsoft PowerPoint、OCR、SVG 轉換器或特定 Python 套件。
+使用可用的簡報製作技能與工具完成實際檔案；若環境提供簡報技能（例如 `presentations` 或 `pptx`），讀取並遵循其建置與渲染流程。沒有這類技能時，使用環境已提供的 PPTX 製作套件與渲染器。先檢查可用能力，不預設安裝有 Microsoft PowerPoint、OCR、SVG 轉換器或特定 Python 套件；不得因工具名稱不同便認定無法執行。
 
 以來源比例設定投影片尺寸，按絕對座標放置物件：
 
