@@ -1,0 +1,4 @@
+interface:
+  display_name: "Meta-analysis Data Extraction"
+  short_description: "Precise PICO and PDF evidence extraction"
+  default_prompt: "Use $meta-analysis-data-extraction to identify PICO from my question and extract the uploaded study PDFs into analysis-ready datasets."
