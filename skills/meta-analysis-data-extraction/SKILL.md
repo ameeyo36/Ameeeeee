@@ -1,6 +1,6 @@
 ---
 name: meta-analysis-data-extraction
-description: Extract systematic-review and meta-analysis data from user-provided full-text study PDFs, beginning with precise PICO identification and ending with analysis-ready full, primary, and multi-study datasets. Use when the user needs auditable PDF structure mapping, table or figure reconstruction, population and intervention-arm counts, effect estimates, or outcome-level evidence extraction; do not use for narrative-only article summaries or literature searches.
+description: "Extract auditable meta-analysis data from study PDFs: precise PICO, source mapping, arm counts, outcomes, and effect estimates. Use for systematic-review extraction, not narrative summaries."
 ---
 
 # Meta-analysis Data Extraction
