@@ -7,6 +7,24 @@
 - PPT：頁碼右上角、評分標籤在標題上方、內文 ≥ 14 pt、不放附錄、參考文獻採 AMA 格式
 - 目前支援治療、預防與傷害題型；診斷、預後、病因題型需另行提供評讀工具
 
+共用同一份 SKILL.md；agents/openai.yaml 僅為 Codex 顯示資訊。SKILL.md 內有「平台對應」表，說明 Claude 與 Codex 的工具差異。
+
+## Codex
+
+在 Codex 貼上以下安裝指令：
+
+```text
+使用 $skill-installer，從以下 GitHub 網址下載並安裝這個技能：
+https://github.com/ameeyo36/Ameeeeee/tree/main/skills/ebm-5a-pipeline
+```
+
+若尚未顯示，重新啟動 Codex，然後輸入：
+
+```text
+使用 $ebm-5a-pipeline，依 5A 步驟分析以下臨床情境，在每個停點停下來問我：
+（貼上臨床情境）
+```
+
 ## Claude Code
 
 下載下方 ZIP 並解壓縮，把整個 ebm-5a-pipeline 資料夾放到個人 `~/.claude/skills/`，或目前專案的 `.claude/skills/`。

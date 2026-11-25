@@ -9,7 +9,7 @@ description: "Run an EBM 5A case (Ask→Acquire→Appraise→Apply→Audit) with
 
 ## 總原則（每一步都適用）
 
-1. **思考邏輯 100% 還原**：6 個工具的判斷邏輯（題目、提示詞、判定規則、輸出欄位、公式）已逐字收錄在文末「工具邏輯附錄 T1–T6」，不需再上傳 TSX。一律依 T1–T6 逐字執行，不自行增刪題目或改寫判定邏輯。原工具呼叫 Gemini API；在本 Skill 中由 Claude 自己依附錄提示詞與規則執行，網頁介面程式碼不收錄。附錄提示詞中的「JSON」為輸出欄位規格，呈現給使用者時改為表格，但欄位一個不少。若使用者上傳新版 TSX，以新版為準，並提醒更新本 Skill。
+1. **思考邏輯 100% 還原**：6 個工具的判斷邏輯（題目、提示詞、判定規則、輸出欄位、公式）已逐字收錄在文末「工具邏輯附錄 T1–T6」，不需再上傳 TSX。一律依 T1–T6 逐字執行，不自行增刪題目或改寫判定邏輯。原工具呼叫 Gemini API；在本 Skill 中由執行的 AI（Claude 或 Codex）自己依附錄提示詞與規則執行，網頁介面程式碼不收錄。附錄提示詞中的「JSON」為輸出欄位規格，呈現給使用者時改為表格，但欄位一個不少。若使用者上傳新版 TSX，以新版為準，並提醒更新本 Skill。
 2. **不捏造**：數字、引文、頁碼、作者、藥價、SDM 結果、Audit 資料一律來自文件、檢索結果或使用者提供；缺資料就標「待補」並在停點詢問。
 3. **禁止縮寫輸出**：檢索語法、關鍵字、藥名清單一律完整輸出；不得寫「9 種 gliflozin」「…」「等」來代替實際內容。引文也不可用「…」截斷。
 4. **原圖不重畫**：森林圖、SoF、表格、網絡圖一律截取原文（嵌入圖原始位元組或頁面渲染），不重繪、不改數字；PRISMA 流程圖例外，可用可編輯圖形繪製（本案自己的檢索流程）。
@@ -17,6 +17,19 @@ description: "Run an EBM 5A case (Ask→Acquire→Appraise→Apply→Audit) with
 6. **語言與格式**：繁體中文；條列與表格優先；評讀判定總表用直式表格。
 7. **引用**：臨床事實與指引建議必須有可查證來源；未查證者標「待查證」。
 8. **題數核對**：逐題評讀輸出前，核對列數＝工具題數（RoB NMA 17 題；CASP SR/MA-RCT 20 個評讀組件；CASP SR/MA-observational 18 題；CEBM RCT 依 T2 結構）。題目的 domain／section 欄位一律轉成同一型別再比對（rob_nma.tsx 的 3.8 題 domain 為字串 "3"，比對時用 String() 或 Number()，否則會漏題）。
+
+## 平台對應（Claude／Codex 共用）
+
+本 Skill 的思考邏輯、停點、評讀規則在兩個平台完全相同，只有工具名稱不同：
+
+| 用途 | Claude | Codex |
+|---|---|---|
+| 停點詢問 | AskUserQuestion | 直接在對話中提問，等使用者回覆後才繼續 |
+| 結果頁面（Step 7） | 以 artifact 發布 | 輸出單一 HTML 檔並提供路徑 |
+| 競賽 PPT（Step 8） | 先讀 pptx skill，以 pptxgenjs 建構 | 以 pptxgenjs（`npm install pptxgenjs`）或 python-pptx 建構 |
+| PPT 驗收 | validate.py＋轉 PDF 逐頁檢查 | LibreOffice 轉 PDF 後逐頁檢查溢字、重疊、邊界 |
+| 書目核對 | PubMed 工具 | 網路搜尋或 PubMed E-utilities |
+| PDF 處理 | 附錄 D pdf_tools.py | 同（`pip install pymupdf`） |
 
 ## 停點總覽
 
