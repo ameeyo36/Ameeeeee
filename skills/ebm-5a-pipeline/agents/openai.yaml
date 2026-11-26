@@ -1,4 +1,0 @@
-interface:
-  display_name: "EBM 5A 實證串接＋NCMEA 競賽簡報"
-  short_description: "PICO→檢索→逐題評讀（CEBM/CASP/RoB NMA）→GRADE→SDM→Audit，產出結果頁與競賽 PPT"
-  default_prompt: "使用 $ebm-5a-pipeline，依 5A 步驟分析我貼上的臨床情境：先拆 PICO 與三層檢索語法，在每個停點停下來問我，最後產出結果頁面與 NCMEA 競賽 PPT。"
