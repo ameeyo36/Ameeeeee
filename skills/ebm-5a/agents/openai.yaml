@@ -1,0 +1,4 @@
+interface:
+  display_name: "EBM 5A 實證案例串接"
+  short_description: "依 Ask→Acquire→Appraise→Apply→Audit 完成臨床案例，含 PICO、檢索語法、逐題評讀、GRADE、SDM 與 HTML 結果頁"
+  default_prompt: "使用 $ebm-5a，依 5A 步驟處理以下臨床情境，遇到停點先問我，不要跳過：（貼上臨床情境）"
